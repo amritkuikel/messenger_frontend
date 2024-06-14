@@ -174,33 +174,39 @@ const Main: React.FC<MainProps> = ({ id }) => {
           </DropdownMenu>
         </div>
         <div>
-          {chat.messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex flex-col ${
-                user?.id === message.senderId ? "items-end" : ""
-              }`}
-            >
+          {chat.messages.map((message) => {
+            const sender = chat.users.find((u) => u.id === message.senderId);
+            return (
               <div
-                className={`flex gap-2 items-center m-2 p-2 w-fit max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg rounded overflow-hidden ${
-                  user?.id === message.senderId
-                    ? "bg-blue-400 dark:bg-blue-600"
-                    : "bg-gray-400 dark:bg-gray-600"
+                key={message.id}
+                className={`flex flex-col ${
+                  user?.id === message.senderId ? "items-end" : ""
                 }`}
-                style={{ wordWrap: "break-word" }}
               >
-                {user?.id === message.senderId ? (
-                  ""
-                ) : (
-                  <Avatar>
-                    <AvatarImage src={user?.avatar} alt="@shadcn" />
-                    <AvatarFallback>{user?.name[0]}</AvatarFallback>
-                  </Avatar>
-                )}
-                <div>{message.message}</div>
+                <div
+                  className={`flex gap-2 items-center m-2 p-2 w-fit max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg rounded overflow-hidden ${
+                    user?.id === message.senderId
+                      ? "bg-blue-400 dark:bg-blue-600"
+                      : "bg-gray-400 dark:bg-gray-600"
+                  }`}
+                  style={{ wordWrap: "break-word" }}
+                >
+                  {user?.id === message.senderId ? (
+                    ""
+                  ) : (
+                    <Avatar>
+                      <AvatarImage
+                        src={sender?.avatar}
+                        alt={sender?.name}
+                      />
+                      <AvatarFallback>{sender?.name[0]}</AvatarFallback>
+                    </Avatar>
+                  )}
+                  <div>{message.message}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           <div ref={messagesEndRef} />
         </div>
       </div>
