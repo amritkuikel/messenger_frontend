@@ -20,6 +20,7 @@ import { Button } from "./ui/button";
 import { ModeToggle } from "./toggle";
 import NavLoading from "./nav_loading";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
 
 const fetcher = (url: string) => axiosInstance.get(url).then((res) => res.data);
 
@@ -98,6 +99,9 @@ const NavBar = () => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <ModeToggle />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link target="_blank" rel="noopener noreferrer" href="https://824f5c1ce7048a62a1cd.vercel.app/create">ChatRoom</Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
