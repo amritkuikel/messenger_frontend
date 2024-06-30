@@ -101,7 +101,7 @@ const NavBar = () => {
             <ModeToggle />
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link target="_blank" rel="noopener noreferrer" href="https://824f5c1ce7048a62a1cd.vercel.app/create">ChatRoom</Link>
+            <Link target="_blank" rel="noopener noreferrer" href="https://ak-chat-portal.vercel.app">ChatRoom</Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
